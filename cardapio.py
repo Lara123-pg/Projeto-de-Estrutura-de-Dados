@@ -51,6 +51,74 @@ def fazer_pedido(pedido):
 
     return 'Pedido anotado'
 
+class Pedido:
+    def __init__(self, pedido):
+        self.pedido = pedido
+        self.next = None
+        self.previous = None
+
+class Lanchonete:
+    def __init__(self):
+        self.pedidoAtual = None
+
+    def adicionarPedido(self, novoPedido: Pedido):
+        if (self.pedidoAtual == None):
+            self.pedidoAtual = novoPedido
+
+            return
+        
+        current = self.pedidoAtual
+
+        while (current.next != None):
+            current = current.next
+
+        current.next = novoPedido
+        current.next.previous = current
+
+    def mostrarPedidoLinkedList(self):
+        current = self.pedidoAtual
+
+        print('Pedido')
+
+        while (current != None):
+            print('-----------------------------')
+            print(f'Pedido atual: {current.pedido}')
+
+            if (current.previous != None):
+                print(f'Pedido anterior: {current.previous.pedido}')
+
+            if (current.next != None):
+                print(f'Próximo pedido: {current.next.pedido}')
+
+            current = current.next
+    
+    def mostrarPedido(self):
+        current = self.pedidoAtual
+
+        print('Pedido')
+        print('-----------------------------')
+        
+        while (current.next != None):
+            print(current.pedido)
+
+            current = current.next
+
+node1 = Pedido('Batata frita')
+node2 = Pedido('Suco')
+node3 = Pedido('Torta')
+node4 = Pedido('Sanduíche de queijo')
+
+pedidos = Lanchonete()
+pedidos.adicionarPedido(node1)
+pedidos.adicionarPedido(node2)
+pedidos.adicionarPedido(node3)
+pedidos.adicionarPedido(node4)
+
+pedidos.mostrarPedido()
+
+'''
+
+
 while True:
     menu()
 
@@ -64,4 +132,4 @@ while True:
     fazerPedido = fazer_pedido(pedido)
 
     print(fazerPedido)
-    print('')
+    print('')'''
