@@ -1,8 +1,3 @@
-print('Seja bem-vindo a lanchonete, abaixo temos as opções do nosso cardápio')
-
-opcoesCardapio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-cardapio = ['Batata frita', 'Sanduíche de bacon', 'Sanduíche de frango', 'Sanduíche de carne', 'Sanduíche de queijo', 'Refrigerante', 'Suco','Sorvete', 'Bolo', 'Torta']
-
 def menu():
     print('''
     Cardápio
@@ -18,6 +13,13 @@ def menu():
     9 - Bolo
     10 - Torta
     ''')
+
+print('Seja bem-vindo a lanchonete, abaixo temos as opções do nosso cardápio')
+
+menu()
+
+opcoesCardapio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+cardapio = ['Batata frita', 'Sanduíche de bacon', 'Sanduíche de frango', 'Sanduíche de carne', 'Sanduíche de queijo', 'Refrigerante', 'Suco','Sorvete', 'Bolo', 'Torta']
 
 def busca_pedido(opcoes, op):
     left = 0
@@ -45,11 +47,8 @@ def fazer_pedido(pedido):
         print('-------------------------------------------------------------------------')
 
         return
-    
-    print(cardapio[adicionarPedido])
-    print('-----------------------')
 
-    return 'Pedido anotado'
+    return cardapio[adicionarPedido]
 
 class Pedido:
     def __init__(self, pedido):
@@ -61,7 +60,9 @@ class Lanchonete:
     def __init__(self):
         self.pedidoAtual = None
 
-    def adicionarPedido(self, novoPedido: Pedido):
+    def adicionarPedido(self, novoPedido):
+        novoPedido = Pedido(novoPedido)
+
         if (self.pedidoAtual == None):
             self.pedidoAtual = novoPedido
 
@@ -98,38 +99,27 @@ class Lanchonete:
         print('Pedido')
         print('-----------------------------')
         
-        while (current.next != None):
+        while (current != None):
             print(current.pedido)
 
             current = current.next
 
-node1 = Pedido('Batata frita')
-node2 = Pedido('Suco')
-node3 = Pedido('Torta')
-node4 = Pedido('Sanduíche de queijo')
 
 pedidos = Lanchonete()
-pedidos.adicionarPedido(node1)
-pedidos.adicionarPedido(node2)
-pedidos.adicionarPedido(node3)
-pedidos.adicionarPedido(node4)
-
-pedidos.mostrarPedido()
-
-'''
-
 
 while True:
-    menu()
-
     pedido = int(input('Digite a opção para pedir ou -1 para finalizar: '))
 
     if (pedido == -1):
         print('Pedido finalizado')
+        print('')
 
         break
     
     fazerPedido = fazer_pedido(pedido)
+    pedidos.adicionarPedido(fazerPedido)
 
     print(fazerPedido)
-    print('')'''
+    print('')
+
+pedidos.mostrarPedido()
