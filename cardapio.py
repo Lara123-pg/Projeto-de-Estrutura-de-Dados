@@ -104,9 +104,45 @@ class Lanchonete:
 
             current = current.next
 
-
 pedidos = Lanchonete()
 
+def outrasOpcoes():
+    opcoes = [1, 2, 3]
+
+    print('''
+    1 - Mostrar pedido
+    2 - Mostrar pedido em formato de lista encadeada
+    3 - Adicionar pedido
+    4 - Remover pedido
+    ''')
+
+    while True:
+        opcao = int(input('Digite a opção escolhida ou digite -1 para finalizar: '))
+        print('')
+
+        if (opcao == -1):
+            break
+
+        if (opcao == 1):
+            pedidos.mostrarPedido()
+        
+        elif (opcao == 2):
+            pedidos.mostrarPedidoLinkedList()
+        
+        elif (opcao == 3):
+            menu()
+            
+            print('')
+            novoPedido = int(input('Digite a opção do novo pedido que vai ser adicionado: '))
+
+            buscaNovoPedido = busca_pedido(opcoesCardapio, novoPedido)
+            pedidos.adicionarPedido(cardapio[buscaNovoPedido])
+        
+        else:
+            pass
+
+    return 'Operação realizada' 
+    
 while True:
     pedido = int(input('Digite a opção para pedir ou -1 para finalizar: '))
 
@@ -114,12 +150,15 @@ while True:
         print('Pedido finalizado')
         print('')
 
+        outrasOpcoes()
+
         break
     
     fazerPedido = fazer_pedido(pedido)
     pedidos.adicionarPedido(fazerPedido)
 
-    print(fazerPedido)
+    print(f'{fazerPedido} foi selecionado.')
+    print('------------------------------')
     print('')
 
 pedidos.mostrarPedido()
