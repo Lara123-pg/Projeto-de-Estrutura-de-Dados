@@ -31,7 +31,9 @@ class Lanchonete:
         index = index - 1
 
         if (self.head == None or index > self.size):
-            return 'Não é possível remover pedido.'
+            print('Não é possível remover pedido.')
+
+            return
 
         elif (index == 0):
             self.head = self.head.next
@@ -39,16 +41,22 @@ class Lanchonete:
         
             return
         
-        current = self.head
+        previous = self.head
+        current = self.head.next
         count = 1
 
-        while (current != None):
-            if (count == index):
-                current.previous = current.next
-                current.next = current.previous
+        while (count <= index):
+            if (current.next != None):
+                previous.next = current.next
+                current.next.previous = current.previous
+       
+                print('Pedido removido.')
+                print('')
 
-                return 'Pedido removido.'
+            else:
+                previous.next = None             
 
+            previous = current
             current = current.next
             count += 1
 

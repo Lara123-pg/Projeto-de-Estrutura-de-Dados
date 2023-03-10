@@ -101,6 +101,7 @@ def outrasOpcoes():
         else:
             print('')
             pedidos.mostrarPedido()
+            print('')
 
             pedidoRemover = int(input('Digite o índice da opção que deseja remover: '))
             pedidos.removerPedido(pedidoRemover)
@@ -129,6 +130,4 @@ while True:
     print('')
 
 print('')
-print('Pedido final')
-print('-------------------------------')
 pedidos.mostrarPedido()
