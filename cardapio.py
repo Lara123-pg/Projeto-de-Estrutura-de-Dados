@@ -57,6 +57,8 @@ pedidos = Lanchonete()
 
 def outrasOpcoes():
     print('''
+    Agora que seu pedido foi finalizado, pode selecionar as opções abaixo:
+
     1 - Mostrar pedido
     2 - Mostrar pedido em formato de lista encadeada
     3 - Adicionar pedido
@@ -72,9 +74,11 @@ def outrasOpcoes():
 
         if (opcao == 1):
             pedidos.mostrarPedido()
+            print('')
         
         elif (opcao == 2):
             pedidos.mostrarPedidoLinkedList()
+            print('')
         
         elif (opcao == 3):
             menu()
@@ -84,9 +88,13 @@ def outrasOpcoes():
 
             buscaNovoPedido = busca_pedido(opcoesCardapio, novoPedido)
             pedidos.adicionarPedido(cardapio[buscaNovoPedido])
+            print('')
         
         else:
-            pass
+            print('')
+            pedidoRemover = int(input('Digite o índice da opção que deseja remover: '))
+
+            pedidos.removerPedido(pedidoRemover)
 
     return 'Operação realizada' 
     

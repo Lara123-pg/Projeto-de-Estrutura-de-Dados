@@ -7,9 +7,12 @@ class Pedido:
 class Lanchonete:
     def __init__(self):
         self.head = None
+        self.size = 0
 
     def adicionarPedido(self, novoPedido):
         novoPedido = Pedido(novoPedido)
+
+        self.size += 1
 
         if (self.head == None):
             self.head = novoPedido
@@ -23,6 +26,29 @@ class Lanchonete:
 
         current.next = novoPedido
         current.next.previous = current
+
+    def removerPedido(self, index):
+        if (self.head == None or index > self.size):
+            return 'Não é possível remover pedido.'
+
+        elif (index == 0):
+            self.head = self.head.next
+            self.head.previous = None
+        
+            return
+        
+        current = self.head
+        count = 1
+
+        while (current != None):
+            if (count == index):
+                current.previous = current.next
+                current.next = current.previous
+
+                return 'Pedido removido.'
+
+            current = current.next
+            count += 1
 
     def mostrarPedidoLinkedList(self):
         current = self.head
