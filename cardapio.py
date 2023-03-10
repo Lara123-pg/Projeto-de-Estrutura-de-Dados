@@ -16,6 +16,16 @@ def menu():
     10 - Torta
     ''')
 
+def menu2():
+    print('''
+Agora que seu pedido foi finalizado, pode selecionar as opções abaixo:
+
+1 - Mostrar pedido
+2 - Mostrar pedido em formato de lista encadeada
+3 - Adicionar pedido
+4 - Remover pedido
+    ''')
+
 print('Seja bem-vindo a lanchonete, abaixo temos as opções do nosso cardápio')
 
 menu()
@@ -56,14 +66,7 @@ def fazer_pedido(pedido):
 pedidos = Lanchonete()
 
 def outrasOpcoes():
-    print('''
-    Agora que seu pedido foi finalizado, pode selecionar as opções abaixo:
-
-    1 - Mostrar pedido
-    2 - Mostrar pedido em formato de lista encadeada
-    3 - Adicionar pedido
-    4 - Remover pedido
-    ''')
+    menu2()
 
     while True:
         opcao = int(input('Digite a opção escolhida ou digite -1 para finalizar: '))
@@ -88,15 +91,24 @@ def outrasOpcoes():
 
             buscaNovoPedido = busca_pedido(opcoesCardapio, novoPedido)
             pedidos.adicionarPedido(cardapio[buscaNovoPedido])
+
+            print(f'{cardapio[buscaNovoPedido]} foi selecionado.')
+            print('-------------------------------')
             print('')
+
+            menu2()
         
         else:
             print('')
-            pedidoRemover = int(input('Digite o índice da opção que deseja remover: '))
+            pedidos.mostrarPedido()
 
+            pedidoRemover = int(input('Digite o índice da opção que deseja remover: '))
             pedidos.removerPedido(pedidoRemover)
 
-    return 'Operação realizada' 
+            print('')
+            menu2()
+
+    return
     
 while True:
     pedido = int(input('Digite a opção para pedir ou -1 para finalizar: '))
@@ -113,7 +125,10 @@ while True:
     pedidos.adicionarPedido(fazerPedido)
 
     print(f'{fazerPedido} foi selecionado.')
-    print('------------------------------')
+    print('-------------------------------')
     print('')
 
+print('')
+print('Pedido final')
+print('-------------------------------')
 pedidos.mostrarPedido()

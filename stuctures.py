@@ -28,6 +28,8 @@ class Lanchonete:
         current.next.previous = current
 
     def removerPedido(self, index):
+        index = index - 1
+
         if (self.head == None or index > self.size):
             return 'Não é possível remover pedido.'
 
@@ -69,11 +71,13 @@ class Lanchonete:
     
     def mostrarPedido(self):
         current = self.head
+        count = 1
 
         print('Pedido')
         print('-----------------------------')
         
         while (current != None):
-            print(current.pedido)
+            print(f'{count} - {current.pedido}')
 
             current = current.next
+            count += 1
