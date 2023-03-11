@@ -31,7 +31,7 @@ class Lanchonete:
         index = index - 1
 
         if (self.head == None or index > self.size):
-            print('Não é possível remover pedido.')
+            print('Não é possível remover esse pedido.')
 
             return
 
@@ -54,7 +54,10 @@ class Lanchonete:
                 print('')
 
             else:
-                previous.next = None             
+                previous.next = None  
+
+                print('Não existe essa opção.')
+                print('')           
 
             previous = current
             current = current.next
