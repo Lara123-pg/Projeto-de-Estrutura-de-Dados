@@ -1,4 +1,5 @@
 from stuctures import *
+from rich.console import Console
 
 def menu():
     print('''
@@ -32,6 +33,8 @@ menu()
 
 opcoesCardapio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 cardapio = ['Batata frita', 'Sanduíche de bacon', 'Sanduíche de frango', 'Sanduíche de carne', 'Sanduíche de queijo', 'Refrigerante', 'Suco','Sorvete', 'Bolo', 'Torta']
+
+console = Console()
 
 def busca_pedido(opcoes, op):
     left = 0
@@ -92,7 +95,7 @@ def outrasOpcoes():
             buscaNovoPedido = busca_pedido(opcoesCardapio, novoPedido)
             pedidos.adicionarPedido(cardapio[buscaNovoPedido])
 
-            print(f'{cardapio[buscaNovoPedido]} foi selecionado.')
+            console.print(f'[bold cyan]{cardapio[buscaNovoPedido]}[/bold cyan] foi selecionado.')
             print('-------------------------------')
             print('')
 
@@ -125,7 +128,7 @@ while True:
     fazerPedido = fazer_pedido(pedido)
     pedidos.adicionarPedido(fazerPedido)
 
-    print(f'{fazerPedido} foi selecionado.')
+    console.print(f'[bold cyan]{fazerPedido}[/bold cyan] foi selecionado.')
     print('-------------------------------')
     print('')
 
