@@ -59,7 +59,7 @@ class Lanchonete:
         current.next.previous = current
 
         self.adicionaQuantidadePedidos(novoPedido)
-    
+
     def removerPedido(self, index):
         index = index - 1
 
@@ -79,23 +79,26 @@ class Lanchonete:
         count = 1
 
         while (count <= index):
-            if (current.next != None):
-                previous.next = current.next
-                current.next.previous = current.previous
-       
+            if (current.next == None):
+                previous.next = None
+
                 print('Pedido removido.')
                 print('')
-
+            
             else:
-                previous.next = None  
+                if count == index:
+                    previous.next = current.next
+                    current.next.previous = current.previous
+        
+                    print('Pedido removido.')
+                    print('')
 
-                print('Não existe essa opção.')
-                print('')           
+                    return
 
             previous = current
             current = current.next
             count += 1
-
+    
     def mostrarPedidoLinkedList(self):
         current = self.head
 
