@@ -1,6 +1,7 @@
 class Pedido:
     def __init__(self, pedido):
         self.pedido = pedido
+        self.quantidade = 0
         self.next = None
         self.previous = None
 
@@ -9,17 +10,47 @@ class Lanchonete:
         self.head = None
         self.size = 0
 
+    def quantidadePedidos(self, pedidoA):
+        current = self.head
+
+        while (current != None):
+            if current.pedido == pedidoA:
+                current.quantidade += 1
+
+                return True
+            
+            current = current.next
+        
+        return False
+    
+    def adicionaQuantidadePedidos(self, pedidoA):
+        current = self.head
+
+        while (current.next != None):
+            if current.next.pedido == pedidoA.pedido:
+                current.next.quantidade += 1
+
+                return
+
+            current = current.next
+
+
     def adicionarPedido(self, novoPedido):
         novoPedido = Pedido(novoPedido)
+        current = self.head
 
+        repetPedido = self.quantidadePedidos(novoPedido.pedido)
+
+        if repetPedido:
+            return
+        
         self.size += 1
 
         if (self.head == None):
             self.head = novoPedido
+            self.head.quantidade += 1
 
             return
-        
-        current = self.head
 
         while (current.next != None):
             current = current.next
@@ -27,6 +58,8 @@ class Lanchonete:
         current.next = novoPedido
         current.next.previous = current
 
+        self.adicionaQuantidadePedidos(novoPedido)
+    
     def removerPedido(self, index):
         index = index - 1
 
@@ -88,7 +121,7 @@ class Lanchonete:
         print('-----------------------------')
         
         while (current != None):
-            print(f'{count} - {current.pedido}')
+            print(f'{count} - {current.pedido} ({current.quantidade})')
 
             current = current.next
             count += 1
