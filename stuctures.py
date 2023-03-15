@@ -69,9 +69,22 @@ class Lanchonete:
             return
 
         elif (index == 0):
-            self.head = self.head.next
-            self.head.previous = None
-        
+            current = self.head
+
+            if (current.quantidade) == 1:
+                if (self.head.next != None):
+                    self.head = self.head.next
+                    self.head.previous = None
+                
+                else:
+                    self.head = None
+
+                print('Pedido removido.')
+                print('')
+            
+            else:
+                current.quantidade -= 1
+            
             return
         
         previous = self.head
@@ -80,16 +93,24 @@ class Lanchonete:
 
         while (count <= index):
             if (current.next == None):
-                previous.next = None
+                if (current.quantidade == 1):
+                    previous.next = None
+                
+                else:
+                    current.quantidade -= 1
 
                 print('Pedido removido.')
                 print('')
             
             else:
                 if count == index:
-                    previous.next = current.next
-                    current.next.previous = current.previous
-        
+                    if (current.quantidade == 1):
+                        previous.next = current.next
+                        current.next.previous = current.previous
+
+                    else:
+                        current.quantidade -= 1
+
                     print('Pedido removido.')
                     print('')
 
