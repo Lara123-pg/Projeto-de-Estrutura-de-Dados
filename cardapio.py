@@ -56,7 +56,7 @@ def busca_pedido(opcoes, op):
 
 def fazer_pedido(pedido):
     adicionarPedido = busca_pedido(opcoesCardapio, pedido)
-
+ 
     if (adicionarPedido == -1):
         print('Não temos essa opção no cardápio, por favor selecione opções entre 1 e 10')
         print('-------------------------------------------------------------------------')

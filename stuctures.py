@@ -10,11 +10,11 @@ class Lanchonete:
         self.head = None
         self.size = 0
 
-    def quantidadePedidos(self, pedidoA):
+    def quantidadePedidos(self, pedidos):
         current = self.head
 
         while (current != None):
-            if current.pedido == pedidoA:
+            if current.pedido == pedidos:
                 current.quantidade += 1
 
                 return True
@@ -23,17 +23,16 @@ class Lanchonete:
         
         return False
     
-    def adicionaQuantidadePedidos(self, pedidoA):
+    def adicionaQuantidadePedidos(self, pedidos):
         current = self.head
 
         while (current.next != None):
-            if current.next.pedido == pedidoA.pedido:
+            if current.next.pedido == pedidos.pedido:
                 current.next.quantidade += 1
 
                 return
 
             current = current.next
-
 
     def adicionarPedido(self, novoPedido):
         novoPedido = Pedido(novoPedido)
