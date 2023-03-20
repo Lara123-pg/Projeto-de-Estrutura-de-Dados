@@ -29,6 +29,7 @@ $ code . (Para abrir o projeto direto no Visual Studio Code)
 ## Como executar via Docker
 
 <p>Para baixar a imagem, utilize o comando abaixo:</p>
+
 ```
 $ docker pull larafernanda/projetoestruturadados
 ```
