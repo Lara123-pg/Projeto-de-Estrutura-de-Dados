@@ -42,4 +42,4 @@ $ docker run -ti larafernanda/projetoestruturadados
 
 ## Licença
 
-<p>Este projeto está sob a licença MIT -</p>
+<p>Este projeto está sob a licença MIT - https://github.com/Lara123-pg/Projeto-de-Estrutura-de-Dados/blob/main/LICENSE</p>
