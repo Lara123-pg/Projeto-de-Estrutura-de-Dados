@@ -126,11 +126,13 @@ while True:
         break
     
     fazerPedido = fazer_pedido(pedido)
-    pedidos.adicionarPedido(fazerPedido)
+    
+    if fazerPedido != None:
+        pedidos.adicionarPedido(fazerPedido)
 
-    console.print(f'[bold cyan]{fazerPedido}[/bold cyan] foi selecionado.')
-    print('-------------------------------')
-    print('')
+        console.print(f'[bold cyan]{fazerPedido}[/bold cyan] foi selecionado.')
+        print('-------------------------------')
+        print('')
 
 print('')
 pedidos.mostrarPedido()
